@@ -18,3 +18,7 @@ class ProductPageLocators():
     PRODUCT_PRICE = (By.CSS_SELECTOR, '.product_main > p[class="price_color"]')
     PRODUCT_SUCCESS_ADDED_MESSAGE = (By.CSS_SELECTOR, ".alertinner")
 
+
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+
