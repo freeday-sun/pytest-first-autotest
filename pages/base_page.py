@@ -18,17 +18,33 @@ class BasePage():
         self.browser.implicitly_wait(timeout)
 
     def go_to_login_page(self):
+        """Method to go to login page
+
+        :return None
+        """
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
 
     def go_to_basket(self):
+        """Method to go to basket page
+
+        :return None
+        """
         link = self.browser.find_element(*BasePageLocators.BASKET_LINK)
         link.click()
 
     def should_be_login_link(self):
+        """Method for checking login button existence
+
+        :return bool:
+        """
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
     def should_be_authorized_user(self):
+        """Method for checking authorized user
+
+        :return bool:
+        """
         assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
                                                                      " probably unauthorised user"
 
@@ -42,6 +58,7 @@ class BasePage():
     def solve_quiz_and_get_code(self):
         """ Method for solving alert quiz
 
+        :return None
         """
         alert = self.browser.switch_to.alert
         x = alert.text.split(" ")[2]
@@ -70,6 +87,13 @@ class BasePage():
         return True
 
     def is_not_element_present(self, how, what, timeout=4):
+        """ Check that the element not exists
+
+        :param how: Choosing a selector search method
+        :param what: Element selector
+        :param timeout: Timeout to wait for an item to appear
+        :return bool:
+        """
         try:
             WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
         except TimeoutException:
@@ -77,6 +101,13 @@ class BasePage():
         return False
 
     def is_disappeared(self, how, what, timeout=4):
+        """ Check that the element not exists
+
+        :param how: Choosing a selector search method
+        :param what: Element selector
+        :param timeout: Timeout for an item to disappear
+        :return bool:
+        """
         try:
             WebDriverWait(self.browser, timeout, 1, TimeoutException).\
                 until_not(EC.presence_of_element_located((how, what)))
