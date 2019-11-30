@@ -20,3 +20,13 @@ class ProductPage(BasePage):
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE)
         assert basket_amount.text == product_price.text,\
             'alert basket amount: "{}" real product price: "{}"'.format(basket_amount.text, product_price.text)
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.PRODUCT_SUCCESS_ADDED_MESSAGE), \
+            'Success message "' + self.browser.find_element(*ProductPageLocators.PRODUCT_SUCCESS_ADDED_MESSAGE).text\
+            + '" is presented, but should not be'
+
+    def success_message_is_disappear(self):
+        assert self.is_disappeared(*ProductPageLocators.PRODUCT_SUCCESS_ADDED_MESSAGE), \
+            'Success message "' + self.browser.find_element(*ProductPageLocators.PRODUCT_SUCCESS_ADDED_MESSAGE).text\
+            + '" not disappeared after adding product to basket'
