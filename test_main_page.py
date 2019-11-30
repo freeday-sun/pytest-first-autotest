@@ -1,5 +1,7 @@
 from .pages.main_page import MainPage
 from .pages.login_page import LoginPage
+from .pages.basket_page import BasketPage
+from time import sleep
 
 link = "http://selenium1py.pythonanywhere.com/"
 
@@ -20,5 +22,13 @@ def test_guest_should_see_login_link(browser):
     page.open()
     page.should_be_login_link()
 
+
+def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
+    page = MainPage(browser, link)
+    page.open()
+    page.go_to_basket()
+    basket_page = BasketPage(browser, browser.current_url)
+    basket_page.empty_basket_doesnt_have_a_proceed_to_checkout_button()
+    basket_page.empty_basket_have_text()
 
 

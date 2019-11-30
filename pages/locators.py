@@ -1,6 +1,10 @@
 from selenium.webdriver.common.by import By
 
 
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    BASKET_LINK = (By.CSS_SELECTOR, ".btn-group > a")
+
 class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
@@ -19,6 +23,7 @@ class ProductPageLocators():
     PRODUCT_SUCCESS_ADDED_MESSAGE = (By.CSS_SELECTOR, ".alertinner")
 
 
-class BasePageLocators():
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+class BasketPageLocators():
+    PROCEED_TO_CHECKOUT_BUTTON = (By.CSS_SELECTOR, ".btn - lg")
+    EMPTY_BASKET_TEXT = (By.CSS_SELECTOR, "#content_inner > p")
 
