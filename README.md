@@ -1,3 +1,3 @@
 # pytest-first-autotest
 
-Первый автотест с использованием паттерна PageObject.
+Code for steptic course - https://stepik.org/course/575/promo
